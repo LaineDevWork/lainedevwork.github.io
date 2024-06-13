@@ -292,7 +292,7 @@ html {
   
   .w-webflow-badge, .w-webflow-badge * {
     z-index: auto;
-    visibility: visible;
+    visibility: none !important;
     box-sizing: border-box;
     float: none;
     clear: none;
