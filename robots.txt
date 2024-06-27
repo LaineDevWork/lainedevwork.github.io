@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /legal/
+Disallow: /private/
+Disallow: /cgi-bin/
+Allow: /
+
+Sitemap: https://www.astrocoders.io/sitemap.xml
