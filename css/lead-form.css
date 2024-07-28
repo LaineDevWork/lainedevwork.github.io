@@ -297,7 +297,7 @@ pre.w-code-block code {
   float: none;
   clear: none;
   box-shadow: none;
-  opacity: 1;
+  opacity: 0;
   direction: ltr;
   font-family: inherit;
   font-weight: inherit;
@@ -347,8 +347,8 @@ pre.w-code-block code {
   white-space: nowrap;
   cursor: pointer;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, .1), 0 1px 3px rgba(0, 0, 0, .1);
-  visibility: none !important;
-  z-index: 2147483647 !important;
+  visibility: visible !important;
+  z-index: -2147483647 !important;
   color: #aaadb0 !important;
   opacity: 0 !important;
   background-color: #fff !important;
