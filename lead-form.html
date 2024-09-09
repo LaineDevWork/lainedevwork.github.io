@@ -111,7 +111,7 @@
                 data-default-duration="1.1" data-duration="0"></div>
             <div class="form-block w-form">
                 <form id="email-form" name="email-form" data-name="Email Form" method="post"
-                    action="https://systeme.io/embedded/19855318/subscription" class="form"
+                    action="https://systeme.io/embedded/20951555/subscription" class="form"
                     data-wf-page-id="6668549c46fd6be01a484850"
                     data-wf-element-id="71feb2bd-9f3a-2804-6827-9600958063d4">
                     <div class="w-layout-hflex flex-block-6">
@@ -187,7 +187,7 @@
         function getUTMParams() {
             const urlParams = new URLSearchParams(window.location.search);
             let utms = '';
-            ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(param => {
+            ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].forEach(param => {
                 const value = urlParams.get(param);
                 if (value) {
                     utms += `${param}=${value}&`;
@@ -205,7 +205,8 @@
                 window.location.href = redirectUrl;
             } else {
                 // Si no hay UTM, redirige a la URL sin modificaciones
-                window.location.href = url;
+                const redirectUrl = url.includes('?') ? `${url}&${utms}` : `${url}?${utms}`;
+                window.location.href = redirectUrl;
             }
         }
 
@@ -221,12 +222,17 @@
             if (document.getElementById('utm_campaign')) {
                 document.getElementById('utm_campaign').value = urlParams.get('utm_campaign') || '';
             }
+            if(document.getElementById('utm_content')) {
+                document.getElementById('utm_content').value = urlParams.get('utm_content') || '';
+            }
             // Puedes añadir más campos si es necesario, como utm_content o utm_term
         }
 
         // Llamar a setUTMParams() cuando la página se cargue
         window.onload = function () {
             setUTMParams();
+            console.log('UTM params set');
+            console.log('UTM params:', getUTMParams());
         };
     </script>
 
