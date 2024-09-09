@@ -45,22 +45,24 @@
         }
     </style>
     <!-- Meta Pixel Code -->
-<script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1046617753130499');
-    fbq('track', 'PageView');
-    fbq('track', 'Lead');
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1046617753130499');
+        fbq('track', 'PageView');
+        fbq('track', 'Lead');
     </script>
     <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1046617753130499&ev=PageView&noscript=1"
-    /></noscript>
+            src="https://www.facebook.com/tr?id=1046617753130499&ev=PageView&noscript=1" /></noscript>
     <!-- End Meta Pixel Code -->
 </head>
 
@@ -106,27 +108,28 @@
             </script>
             <a id="scheduleButton" href="https://www.astrocoders.io/schedule-android-call"
                 class="waves---cta-dark button-glow w-button"
-                style="margin-top: 30px; margin-bottom: 30px; width: 80%; text-align: center;" onclick="fbq('track', 'ScheduleCall');">AGENDA TU LLAMADA</a>
-                <script>
-                    document.addEventListener("DOMContentLoaded", function () {
-                        // Verifica si el usuario ya ha visitado la página
-                        const hasVisited = localStorage.getItem('hasVisited');
-    
-                        // Obtén el botón
-                        const scheduleButton = document.getElementById('scheduleButton');
-    
-                        if (!hasVisited) {
-                            // Primera vez que visita la página
-                            localStorage.setItem('hasVisited', 'true');
-                            setTimeout(function () {
-                                scheduleButton.style.display = 'flex';
-                            }, 2000); // Muestra el botón después de 2 segundos
-                        } else {
-                            // Usuario ya ha visitado la página antes
-                            scheduleButton.style.display = 'flex'; // Muestra el botón inmediatamente
-                        }
-                    });
-                </script>
+                style="margin-top: 30px; margin-bottom: 30px; width: 80%; text-align: center;"
+                onclick="fbq('track', 'Contact');">AGENDA TU LLAMADA</a>
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    // Verifica si el usuario ya ha visitado la página
+                    const hasVisited = localStorage.getItem('hasVisited');
+
+                    // Obtén el botón
+                    const scheduleButton = document.getElementById('scheduleButton');
+
+                    if (!hasVisited) {
+                        // Primera vez que visita la página
+                        localStorage.setItem('hasVisited', 'true');
+                        setTimeout(function () {
+                            scheduleButton.style.display = 'flex';
+                        }, 2000); // Muestra el botón después de 2 segundos
+                    } else {
+                        // Usuario ya ha visitado la página antes
+                        scheduleButton.style.display = 'flex'; // Muestra el botón inmediatamente
+                    }
+                });
+            </script>
 
         </div>
     </div>
