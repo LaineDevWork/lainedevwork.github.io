@@ -1,3 +1,10 @@
+<?php
+    /*
+     * Template Name: LeadForm
+     */
+?>
+<!-- This page is generated outside of WP by: /wp-content/themes/CURRENT-THEME/home.php -->
+<!-- Your HTML Code Here -->
 <!DOCTYPE html>
 <!-- This site was created in Webflow. https://webflow.com --><!-- Last Published: Tue Jun 18 2024 09:26:03 GMT+0000 (Coordinated Universal Time) -->
 <html data-wf-domain="project-x-647d79.webflow.io" data-wf-page="6668549c46fd6be01a484850"
@@ -6,19 +13,14 @@
 <head>
     <meta charset="utf-8" />
     <title>Clase Gratuita de Desarrollo Android | Consigue un Trabajo Remoto de Alto Sueldo</title>
-    <meta name="description"
-        content="Regístrate a nuestra clase gratuita y aprende a convertirte en un desarrollador Android en solo 6 meses. Descubre cómo conseguir un trabajo remoto con un sueldo alto." />
+    <meta name="description" content="Regístrate a nuestra clase gratuita y aprende a convertirte en un desarrollador Android en solo 6 meses. Descubre cómo conseguir un trabajo remoto con un sueldo alto." />
     <meta content="Clase Gratuita de Desarrollo Android" property="og:title" />
-    <meta
-        content="Regístrate para nuestra clase gratuita y aprende a convertirte en un desarrollador Android en solo 6 meses."
-        property="og:description" />
+    <meta content="Regístrate para nuestra clase gratuita y aprende a convertirte en un desarrollador Android en solo 6 meses." property="og:description" />
     <meta content="https://astrocoders.io/lead-form" property="og:url" />
     <meta content="https://lainedevwork.github.io/assets/og-image.png" property="og:image" />
     <meta content="website" property="og:type" />
     <meta content="Clase Gratuita de Desarrollo Android" property="twitter:title" />
-    <meta
-        content="Regístrate para nuestra clase gratuita y aprende a convertirte en un desarrollador Android en solo 6 meses."
-        property="twitter:description" />
+    <meta content="Regístrate para nuestra clase gratuita y aprende a convertirte en un desarrollador Android en solo 6 meses." property="twitter:description" />
     <meta content="https://lainedevwork.github.io/assets/og-image.png" property="twitter:image" />
     <meta content="summary_large_image" property="twitter:card" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
@@ -39,25 +41,38 @@
     </script>
     <link href="https://lainedevwork.github.io/assets/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="https://lainedevwork.github.io/assets/favicon.ico" rel="apple-touch-icon" />
-    <!-- Meta Pixel Code -->
-    <script>
-        !function (f, b, e, v, n, t, s) {
-            if (f.fbq) return; n = f.fbq = function () {
-                n.callMethod ?
-                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-            };
-            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-            n.queue = []; t = b.createElement(e); t.async = !0;
-            t.src = v; s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s)
-        }(window, document, 'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1046617753130499');
-        fbq('track', 'PageView');
+    <style>
+    /* Ocultar todos los posibles contenedores del footer */
+footer.site-footer, 
+.footer-widget-area, 
+.footer-credits, 
+.site-info, 
+.copyright-footer,
+#ast-scroll-top,
+#colophon {
+    display: none !important;
+}
+
+</style>
+<!-- Meta Pixel Code -->
+<script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1046617753130499');
+    fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none"
-            src="https://www.facebook.com/tr?id=1046617753130499&ev=PageView&noscript=1" /></noscript>
+    src="https://www.facebook.com/tr?id=1046617753130499&ev=PageView&noscript=1"
+    /></noscript>
     <!-- End Meta Pixel Code -->
+
+         <?php wp_head(); ?>
 </head>
 
 <body class="body-2">
@@ -143,12 +158,6 @@
                     document.getElementById('email-form').addEventListener('submit', function (e) {
                         e.preventDefault();
 
-                        // Obtener el botón de envío
-                        var submitButton = document.querySelector('#email-form input[type="submit"]');
-
-                        // Cambiar el texto del botón a "CARGANDO..."
-                        submitButton.value = 'CARGANDO...';
-
                         var firstName = document.getElementById('name').value;
                         var email = document.getElementById('email').value;
 
@@ -160,11 +169,7 @@
                             },
                             body: JSON.stringify({
                                 first_name: firstName,
-                                email: email,
-                                utm_source: document.getElementById('utm_source').value,
-                                utm_medium: document.getElementById('utm_medium').value,
-                                utm_campaign: document.getElementById('utm_campaign').value,
-                                utm_content: document.getElementById('utm_content').value
+                                email: email
                             })
                         }).then(function (response) {
                             redirectToUrlWithUTM('https://www.astrocoders.io/free-lesson?email=' + encodeURIComponent(email));
@@ -246,7 +251,6 @@
             console.log(stuff + "UTM SOURCE")
         };
     </script>
-
+         <?php wp_footer(); ?>
 </body>
-
 </html>

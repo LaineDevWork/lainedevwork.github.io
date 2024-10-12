@@ -49,7 +49,7 @@
         !function (f, b, e, v, n, t, s) {
             if (f.fbq) return; n = f.fbq = function () {
                 n.callMethod ?
-                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
             };
             if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
             n.queue = []; t = b.createElement(e); t.async = !0;
@@ -106,10 +106,19 @@
                     vsl(l + 'loader.min.js', function () { if (!vli) { var vlc = v[c][vl]; vli = new vlc(); } vli.loadScript(l + 'player.min.js', function () { var vec = v[d][ve]; t = new vec(); t.run(a); }); });
                 })(window, document, 'Vidalytics', 'vidalytics_embed_XKhGAAPbtOtCPW07', 'https://fast.vidalytics.com/embeds/B_LDOh_f/XKhGAAPbtOtCPW07/');
             </script>
-            <a id="scheduleButton"
-                class="waves---cta-dark button-glow w-button"
-                style="margin-top: 30px; margin-bottom: 30px; width: 80%; text-align: center;"
-                onclick="redirectToUrlWithUTM('https://www.astrocoders.io/schedule-android-call'); ('track', 'Contact');">AGENDA TU LLAMADA</a>
+            <a id="scheduleButton" class="waves---cta-dark button-glow w-button"
+                style="margin-top: 30px; margin-bottom: 30px; width: 80%; text-align: center;" onclick="
+                 var email = getQueryParam('email');
+                 fetch('https://astrocoderssystemeapi.onrender.com/update_lead', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email: email })  // Envia el correo en formato JSON
+            })
+                fbq('track', 'Contact');
+                redirectToUrlWithUTM('https://www.astrocoders.io/schedule-android-call');  
+                ">AGENDA TU LLAMADA</a>
             <script>
                 document.addEventListener("DOMContentLoaded", function () {
                     // Verifica si el usuario ya ha visitado la página
@@ -131,59 +140,67 @@
                 });
             </script>
 
-<script>
-    // Función para obtener los parámetros UTM de la URL actual
-    function getUTMParams() {
-        const urlParams = new URLSearchParams(window.location.search);
-        let utms = '';
-        ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].forEach(param => {
-            const value = urlParams.get(param);
-            if (value) {
-                utms += `${param}=${value}&`;
-            }
-        });
-        return utms.slice(0, -1); // Elimina el último "&" sobrante
-    }
+            <script>
+                // Función para obtener los parámetros UTM de la URL actual
+                function getUTMParams() {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    let utms = '';
+                    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].forEach(param => {
+                        const value = urlParams.get(param);
+                        if (value) {
+                            utms += `${param}=${value}&`;
+                        }
+                    });
+                    return utms.slice(0, -1); // Elimina el último "&" sobrante
+                }
 
-    // Función para redirigir a una nueva URL, conservando los UTM
-    function redirectToUrlWithUTM(url) {
-        const utms = getUTMParams();
-        if (utms) {
-            // Si hay UTM, añade los parámetros a la URL
-            const redirectUrl = url.includes('?') ? `${url}&${utms}` : `${url}?${utms}`;
-            window.location.href = redirectUrl;
-        } else {
-            // Si no hay UTM, redirige a la URL sin modificaciones
-            const redirectUrl = url.includes('?') ? `${url}&${utms}` : `${url}?${utms}`;
-            window.location.href = redirectUrl;
-        }
-    }
+                function getQueryParam(param) {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    return urlParams.get(param);
+                }
 
-    // Función para rellenar los campos UTM en un formulario
-    function setUTMParams() {
-        const urlParams = new URLSearchParams(window.location.search);
-        if (document.getElementById('utm_source')) {
-            document.getElementById('utm_source').value = urlParams.get('utm_source') || '';
-        }
-        if (document.getElementById('utm_medium')) {
-            document.getElementById('utm_medium').value = urlParams.get('utm_medium') || '';
-        }
-        if (document.getElementById('utm_campaign')) {
-            document.getElementById('utm_campaign').value = urlParams.get('utm_campaign') || '';
-        }
-        if(document.getElementById('utm_content')) {
-            document.getElementById('utm_content').value = urlParams.get('utm_content') || '';
-        }
-        // Puedes añadir más campos si es necesario, como utm_content o utm_term
-    }
+                // Obtener el email desde la URL
+                var userEmail = getQueryParam('email');
 
-    // Llamar a setUTMParams() cuando la página se cargue
-    window.onload = function () {
-        setUTMParams();
-        console.log('UTM params set');
-        console.log('UTM params:', getUTMParams());
-    };
-</script>
+                // Función para redirigir a una nueva URL, conservando los UTM
+                function redirectToUrlWithUTM(url) {
+                    const utms = getUTMParams();
+                    if (utms) {
+                        // Si hay UTM, añade los parámetros a la URL
+                        const redirectUrl = url.includes('?') ? `${url}&${utms}` : `${url}?${utms}`;
+                        window.location.href = redirectUrl;
+                    } else {
+                        // Si no hay UTM, redirige a la URL sin modificaciones
+                        const redirectUrl = url.includes('?') ? `${url}&${utms}` : `${url}?${utms}`;
+                        window.location.href = redirectUrl;
+                    }
+                }
+
+                // Función para rellenar los campos UTM en un formulario
+                function setUTMParams() {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    if (document.getElementById('utm_source')) {
+                        document.getElementById('utm_source').value = urlParams.get('utm_source') || '';
+                    }
+                    if (document.getElementById('utm_medium')) {
+                        document.getElementById('utm_medium').value = urlParams.get('utm_medium') || '';
+                    }
+                    if (document.getElementById('utm_campaign')) {
+                        document.getElementById('utm_campaign').value = urlParams.get('utm_campaign') || '';
+                    }
+                    if (document.getElementById('utm_content')) {
+                        document.getElementById('utm_content').value = urlParams.get('utm_content') || '';
+                    }
+                    // Puedes añadir más campos si es necesario, como utm_content o utm_term
+                }
+
+                // Llamar a setUTMParams() cuando la página se cargue
+                window.onload = function () {
+                    setUTMParams();
+                    console.log('UTM params set');
+                    console.log('UTM params:', getUTMParams());
+                };
+            </script>
 
         </div>
     </div>
