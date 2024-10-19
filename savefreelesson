@@ -107,6 +107,14 @@
             </script>
             <a id="scheduleButton" class="waves---cta-dark button-glow w-button"
                 style="margin-top: 30px; margin-bottom: 30px; width: 80%; text-align: center;" onclick="
+                 var email = getQueryParam('email');
+                 fetch('https://astrocoderssystemeapi.onrender.com/update_lead', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email: email })  // Envia el correo en formato JSON
+            })
                 fbq('track', 'Contact');
                 redirectToUrlWithUTM('https://www.astrocoders.io/schedule-android-call');  
                 ">AGENDA TU LLAMADA</a>

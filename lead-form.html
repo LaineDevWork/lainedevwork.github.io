@@ -110,8 +110,8 @@
                 data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg"
                 data-default-duration="1.1" data-duration="0"></div>
             <div class="form-block w-form">
-                <form id="email-form" name="email-form" data-name="Email Form" method="post"
-                    action="https://systeme.io/embedded/20951555/subscription" class="form"
+                <form id="email-form" name="email-form" data-name="Email Form"
+                    action="https://systeme.io/embedded/20951555/subscription" method="post" class="form"
                     data-wf-page-id="6668549c46fd6be01a484850"
                     data-wf-element-id="71feb2bd-9f3a-2804-6827-9600958063d4">
                     <div class="w-layout-hflex flex-block-6">
@@ -139,47 +139,12 @@
                         class="waves---cta-dark wide-cta button-glow w-button" value="VER CLASE GRATUITA" />
                 </form>
 
+                <!-- Agregamos el script para rastrear el evento "Lead" -->
                 <script>
-                    document.getElementById('email-form').addEventListener('submit', function (e) {
-                        e.preventDefault();
-
-                        // Obtener el botón de envío
-                        var submitButton = document.querySelector('#email-form input[type="submit"]');
-
-                        // Cambiar el texto del botón a "CARGANDO..."
-                        submitButton.value = 'CARGANDO...';
-
-                        var firstName = document.getElementById('name').value;
-                        var email = document.getElementById('email').value;
-
-                        // Envía los datos en formato JSON
-                        fetch('https://astrocoderssystemeapi.onrender.com/create_contact', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                first_name: firstName,
-                                email: email,
-                                utm_source: document.getElementById('utm_source').value,
-                                utm_medium: document.getElementById('utm_medium').value,
-                                utm_campaign: document.getElementById('utm_campaign').value,
-                                utm_content: document.getElementById('utm_content').value
-                            })
-                        }).then(function (response) {
-                            // Registrar el evento Lead en Facebook Pixel
-                            fbq('track', 'Lead');
-                            fbq('track', 'CompleteRegistration');
-                            redirectToUrlWithUTM('https://www.astrocoders.io/free-lesson?email=' + encodeURIComponent(email));
-                        }).catch(function (error) {
-                            console.error('Error:', error);
-                            // Registrar el evento Lead en Facebook Pixel
-                            fbq('track', 'Lead');
-                            fbq('track', 'CompleteRegistration');
-                            redirectToUrlWithUTM('https://www.astrocoders.io/free-lesson?email=' + encodeURIComponent(email));
-                        });
+                    console.log('Script cargado');
+                    document.getElementById('contactForm').addEventListener('submit', function () {
+                        fbq('track', 'Lead');
                     });
-
                 </script>
 
                 <div class="w-form-done">
