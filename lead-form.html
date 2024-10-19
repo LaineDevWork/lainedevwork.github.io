@@ -111,23 +111,17 @@
                 data-default-duration="1.1" data-duration="0"></div>
             <div class="form-block w-form">
                 <form id="email-form" name="email-form" data-name="Email Form"
-                    action="https://systeme.io/embedded/20951555/subscription" method="post" class="form"
-                    data-wf-page-id="6668549c46fd6be01a484850"
-                    data-wf-element-id="71feb2bd-9f3a-2804-6827-9600958063d4">
+                    action="https://systeme.io/embedded/20951555/subscription" method="post" class="form">
                     <div class="w-layout-hflex flex-block-6">
-                        <input type="hidden" name="utm_source" id="utm_source">
-                        <input type="hidden" name="utm_medium" id="utm_medium">
-                        <input type="hidden" name="utm_campaign" id="utm_campaign">
-                        <input type="hidden" name="utm_content" id="utm_content">
-                        <input class="custom-form w-input" maxlength="256" name="first_name" data-name="Name"
-                            placeholder="Nombre sin apellidos*" type="text" id="name" required="" />
+                        <input class="custom-form w-input" name="first_name" data-name="Name"
+                            placeholder="Nombre sin apellidos*" type="text" id="name" required/>
                         <div class="div-block-2"></div>
-                        <input class="custom-form w-input" maxlength="256" name="email" data-name="Email"
-                            placeholder="Tu mejor email*" type="email" id="email" required="" />
+                        <input class="custom-form w-input" name="email" data-name="Email"
+                            placeholder="Tu mejor email*" type="email" id="email" required />
                     </div>
                     <label class="w-checkbox checkbox-field">
                         <div class="w-checkbox-input w-checkbox-input--inputType-custom checkbox"></div>
-                        <input type="checkbox" name="Checkbox" id="Checkbox" data-name="Checkbox" required=""
+                        <input type="checkbox" name="Checkbox" id="Checkbox" data-name="Checkbox" required
                             style="opacity: 0; position: absolute; z-index: -1;" />
                         <span class="checkbox-label w-form-label" for="Checkbox">
                             He leído la <a target="_blank" href="https://www.astrocoders.io/privacypolicy"
@@ -135,20 +129,15 @@
                             formativos o comunicaciones comerciales.
                         </span>
                     </label>
-                    <input type="submit" data-wait="Please wait..."
+                    <input type="submit"
                         class="waves---cta-dark wide-cta button-glow w-button" value="VER CLASE GRATUITA" />
                 </form>
 
                 <!-- Agregamos el script para rastrear el evento "Lead" -->
                 <script>
-                    document.getElementById('email-form').addEventListener('submit', function (e) {
-                        e.preventDefault();
-                
-                        fbq('track', 'Lead', {}, {
-                            callback: function() {
-                                document.getElementById('email-form').submit();
-                            }
-                        });
+                    console.log('Script cargado');
+                    document.getElementById('email-form').addEventListener('submit', function() {
+                        fbq('track', 'Lead');
                     });
                 </script>
                 
