@@ -141,11 +141,17 @@
 
                 <!-- Agregamos el script para rastrear el evento "Lead" -->
                 <script>
-                    console.log('Script cargado');
-                    document.getElementById('email-form').addEventListener('submit', function () {
-                        fbq('track', 'Lead');
+                    document.getElementById('email-form').addEventListener('submit', function (e) {
+                        e.preventDefault();
+                
+                        fbq('track', 'Lead', {}, {
+                            callback: function() {
+                                document.getElementById('email-form').submit();
+                            }
+                        });
                     });
                 </script>
+                
 
                 <div class="w-form-done">
                     <div>¡Gracias! Serás redirigido en un instante...</div>
